@@ -466,16 +466,18 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .contact-card .wa { justify-self: start; display: inline-flex; align-items: center; gap: .4rem; margin-top: .45rem; padding: .6rem 1.1rem; border-radius: 999px; background: var(--gold); color: #2a1712; font-weight: 700; text-decoration: none; }
 .contact-card .wa:hover { background: var(--gold-soft); }
 @media (max-width: 900px) { .enquiry { grid-template-columns: 1fr; } }
+.book-ahead { display: inline-block; margin-top: .4rem; padding: .55rem .9rem; border-left: 4px solid var(--gold); border-radius: 6px; background: color-mix(in srgb, var(--gold) 14%, var(--surface)); color: var(--fg) !important; }
+.book-ahead b { color: var(--primary); }
 </style>
 
 <header class="top">
   <div class="zari" aria-hidden="true"></div>
-  <div class="ticker" role="note" aria-label="For Caterers Booking, please WhatsApp or call +91 93608 76497">
+  <div class="ticker" role="note" aria-label="For Caterers Booking, please WhatsApp or call +91 93608 76497. Book at least 3 days in advance.">
     <div class="ticker-track" aria-hidden="true">
-      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b></span>
-      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b></span>
-      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b></span>
-      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b></span>
+      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b> · Book at least 3 days in advance</span>
+      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b> · Book at least 3 days in advance</span>
+      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b> · Book at least 3 days in advance</span>
+      <span class="ticker-item">For Caterers Booking, please <a href="https://wa.me/919360876497" target="_blank" rel="noopener" tabindex="-1">WhatsApp</a> or call <b>+91 93608 76497</b> · Book at least 3 days in advance</span>
     </div>
   </div>
   <div class="wrap">
@@ -667,7 +669,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <h2>From first call to the last plate</h2>
       </div>
       <ol class="steps">
-        <li><span class="when">Today</span><strong>Send an enquiry</strong><span>Tell us the date, venue, guest count and the meals you need. We call back within a day.</span></li>
+        <li><span class="when">Today</span><strong>Send an enquiry</strong><span>Tell us the date, venue, guest count and the meals you need, at least 3 days before your function. We call back within a day.</span></li>
         <li><span class="when">After our call</span><strong>Fix your menu and confirm</strong><span>We plan the menu with you and share the price. Lock the date with a 30% advance. Final count is due 3 days before.</span></li>
         <li><span class="when">Function day</span><strong>We cook and serve</strong><span>Our team arrives 15 minutes before serving time, serves every guest and leaves the hall clean.</span></li>
       </ol>
@@ -680,6 +682,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <span class="eyebrow">Enquiry</span>
         <h2>Tell us about your function</h2>
         <p>Pick your meals and guest count. We will call you back with the price for your menu.</p>
+        <p class="book-ahead"><b>Please book at least 3 days before your function</b> so Amma can plan your menu and get fresh ingredients ready.</p>
       </div>
       <div class="enquiry">
         <form class="card" id="enqForm" novalidate>
@@ -709,6 +712,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <div class="field">
               <label for="date">Function date</label>
               <input id="date" name="date" type="date">
+              <span class="hint">Book at least 3 days before your function</span>
             </div>
           </div>
           <div class="row">
@@ -748,7 +752,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <aside class="contact-card" id="contact">
           <span class="eyebrow">Contact</span>
           <h3>Call or WhatsApp to book</h3>
-          <p class="contact-note">Prefer to talk? Call or message us and Amma's team will plan your menu with you.</p>
+          <p class="contact-note">Prefer to talk? Call or message us and Amma's team will plan your menu with you. Please book at least 3 days in advance.</p>
           <div class="contact-grid">
         <div><span class="k">Phone &amp; WhatsApp</span><span class="v">+91 93608 76497</span><a class="wa" href="https://wa.me/919360876497" target="_blank" rel="noopener">Chat on WhatsApp →</a></div>
         <div><span class="k">Email</span><span class="v">ammasvirundhu@gmail.com</span></div>
@@ -788,7 +792,11 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
   MEALS.forEach(m => $("m-" + m.key).addEventListener("change", calc));
 
   // date starts empty; only past dates are blocked
-  $("date").min = new Date().toISOString().slice(0, 10);
+  // earliest function date: 3 days from today (orders need 3 days notice)
+  const earliest = new Date(); earliest.setDate(earliest.getDate() + 3);
+  const pad = n => String(n).padStart(2, "0");
+  const earliestStr = earliest.getFullYear() + "-" + pad(earliest.getMonth() + 1) + "-" + pad(earliest.getDate());
+  $("date").min = earliestStr;
 
   $("enqForm").addEventListener("submit", e => {
     e.preventDefault();
@@ -798,6 +806,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     if ($("phone").value.replace(/\D/g, "").length < 10) problems.push("enter a 10-digit phone number");
     if (guests() < 20 || guests() > 60) problems.push("set the guest count between 20 and 60");
     if (!chosenMeals().length) problems.push("pick at least one meal");
+    if ($("date").value && $("date").value < earliestStr) problems.push("choose a function date at least 3 days from today");
     if (problems.length) {
       err.textContent = "To prepare your enquiry, please " + problems.join(", ") + ".";
       err.hidden = false; $("done").hidden = true; return;
