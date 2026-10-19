@@ -739,9 +739,11 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <textarea id="wishes" name="wishes" rows="3" placeholder="Tell us your favourite dishes or family specials, and we will plan the menu around them"></textarea>
           </div>
           <p class="error" id="formError" hidden></p>
-          <button class="btn" type="submit">Submit</button>
+          <input type="text" name="_honey" id="honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <button class="btn" type="submit" id="submitBtn">Submit</button>
           <div class="done" id="done" hidden>
-            <strong>Almost done! Tap "Send on WhatsApp" to send your enquiry to us, or call +91 93608 76497.</strong>
+            <strong id="sendStatus" aria-live="polite">Sending your enquiry…</strong>
+            <span class="hint" id="sendNote">You can also send the same details on WhatsApp, or call +91 93608 76497.</span>
             <pre id="summary"></pre>
             <div class="cta-row">
               <a class="btn small" id="waBtn" href="https://wa.me/919360876497" target="_blank" rel="noopener">Send on WhatsApp</a>
@@ -827,7 +829,51 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     $("waBtn").href = "https://wa.me/919360876497?text=" + encodeURIComponent($("summary").textContent);
     $("done").hidden = false;
     $("copyMsg").textContent = "";
+    sendEnquiryEmail(r, mealNames);
   });
+
+  // Email each enquiry to the owner (copy to the business inbox) through FormSubmit
+  const ENQUIRY_ENDPOINT = "https://formsubmit.co/ajax/saran18994@gmail.com";
+  function sendEnquiryEmail(r, mealNames) {
+    const status = $("sendStatus"), btn = $("submitBtn");
+    if ($("honey").value) return;
+    status.textContent = "Sending your enquiry…";
+    btn.disabled = true;
+    const data = {
+      _subject: "New catering enquiry: " + $("name").value.trim() + " (" + $("occasion").value + ")",
+      _cc: "ammasvirundhu@gmail.com",
+      _template: "table",
+      _captcha: "false",
+      Name: $("name").value.trim(),
+      Phone: $("phone").value.trim(),
+      Occasion: $("occasion").value,
+      "Function date": $("date").value || "To confirm",
+      Guests: String(r.g),
+      Meals: mealNames,
+      Address: $("venue").value.trim() || "To confirm",
+      "Dishes they would like": $("wishes").value.trim() || "-",
+      Area: $("locName").textContent
+    };
+    fetch(ENQUIRY_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json().then(j => ({ ok: res.ok, j })))
+      .then(({ ok, j }) => {
+        if (ok && String(j.success) === "true") {
+          status.textContent = "Thank you! Your enquiry has been sent. Amma's team will call you within a day.";
+          $("sendNote").textContent = "Want a faster reply? Send the same details on WhatsApp too.";
+        } else {
+          throw new Error(j && j.message ? j.message : "not sent");
+        }
+      })
+      .catch(() => {
+        status.textContent = "We couldn't send it online right now. Please tap \"Send on WhatsApp\" below, or call +91 93608 76497.";
+        $("sendNote").textContent = "";
+      })
+      .finally(() => { btn.disabled = false; });
+  }
 
   $("copyBtn").addEventListener("click", () => {
     const text = $("summary").textContent;
