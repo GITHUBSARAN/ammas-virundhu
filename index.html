@@ -739,9 +739,9 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <textarea id="wishes" name="wishes" rows="3" placeholder="Tell us your favourite dishes or family specials, and we will plan the menu around them"></textarea>
           </div>
           <p class="error" id="formError" hidden></p>
-          <button class="btn" type="submit">Prepare my enquiry</button>
+          <button class="btn" type="submit">Submit</button>
           <div class="done" id="done" hidden>
-            <strong>Your enquiry is ready. Send it to us on WhatsApp, or call +91 93608 76497 and read it out.</strong>
+            <strong>Almost done! Tap "Send on WhatsApp" to send your enquiry to us, or call +91 93608 76497.</strong>
             <pre id="summary"></pre>
             <div class="cta-row">
               <a class="btn small" id="waBtn" href="https://wa.me/919360876497" target="_blank" rel="noopener">Send on WhatsApp</a>
@@ -809,7 +809,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     if (!chosenMeals().length) problems.push("pick at least one meal");
     if ($("date").value && $("date").value < earliestStr) problems.push("choose a function date at least 3 days from today");
     if (problems.length) {
-      err.textContent = "To prepare your enquiry, please " + problems.join(", ") + ".";
+      err.textContent = "To submit your enquiry, please " + problems.join(", ") + ".";
       err.hidden = false; $("done").hidden = true; return;
     }
     err.hidden = true;
