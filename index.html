@@ -669,7 +669,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <h2>From first call to the last plate</h2>
       </div>
       <ol class="steps">
-        <li><span class="when">Today</span><strong>Send an enquiry</strong><span>Tell us the date, venue, guest count and the meals you need, at least 3 days before your function. We call back within a day.</span></li>
+        <li><span class="when">Today</span><strong>Send an enquiry</strong><span>Tell us the date, address, guest count and the meals you need, at least 3 days before your function. We call back within a day.</span></li>
         <li><span class="when">After our call</span><strong>Fix your menu and confirm</strong><span>We plan the menu with you and share the price. Lock the date with a 30% advance. Final count is due 3 days before.</span></li>
         <li><span class="when">Function day</span><strong>We cook and serve</strong><span>Our team arrives 15 minutes before serving time, serves every guest and leaves the hall clean.</span></li>
       </ol>
@@ -721,10 +721,11 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
               <input id="guests" name="guests" type="number" min="20" max="60" step="5" placeholder="20 to 60" inputmode="numeric">
               <span class="hint">20 to 60 guests</span>
             </div>
-            <div class="field">
-              <label for="venue">Venue or area</label>
-              <input id="venue" name="venue" placeholder="Hall name, area or pin code">
-            </div>
+            <div aria-hidden="true"></div>
+          </div>
+          <div class="field">
+            <label for="venue">Full address</label>
+            <textarea id="venue" name="venue" rows="3" autocomplete="street-address" placeholder="Door no, street, area, landmark, Puducherry, pin code"></textarea>
           </div>
           <fieldset class="meals-pick">
             <legend>Meals</legend>
@@ -819,7 +820,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       "Name: " + $("name").value.trim() + "\n" +
       "Phone: " + $("phone").value.trim() + "\n" +
       "Occasion: " + $("occasion").value + " on " + ($("date").value || "date to confirm") + "\n" +
-      "Venue: " + ($("venue").value.trim() || "to confirm") + "\n" +
+      "Address: " + ($("venue").value.trim().replace(/\s*\n\s*/g, ", ") || "to confirm") + "\n" +
       "Meals: " + mealNames + ", " + r.g + " guests\n" +
       ($("wishes").value.trim() ? "Dishes we would like: " + $("wishes").value.trim() + "\n" : "") +
       "Please send me the price for this menu.";
@@ -954,7 +955,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     city = c;
     $("locName").textContent = c;
     locBtn.setAttribute("aria-label", "Area: " + c + ". Change area");
-    $("venue").placeholder = c === "Puducherry" ? "Hall name or area in Puducherry" : "Hall name or street in " + c;
+    $("venue").placeholder = c === "Puducherry" ? "Door no, street, area, landmark, Puducherry, pin code" : "Door no, street, landmark, " + c + ", Puducherry, pin code";
     try { localStorage.setItem("ammasilai-area", c); } catch (_) {}
     renderCities();
   }
