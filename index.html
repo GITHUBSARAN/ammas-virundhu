@@ -550,7 +550,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <ul class="hero-points">
           <li>Menu as per your choice</li>
           <li>Breakfast to dinner</li>
-          <li>25 to 60 guests</li>
+          <li>20 to 60 guests</li>
         </ul>
       </div>
     </div>
@@ -575,7 +575,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <p>From a small pooja to a family function of up to 60 guests, we can cover the whole day: morning breakfast, lunch on the banana leaf, evening mini tiffin and dinner. We cook in our kitchen, bring the food hot, serve your guests and clean up, so your family can be with your guests.</p>
         <dl class="about-facts">
           <div><dt>Kitchen</dt><dd>100% vegetarian</dd></div>
-          <div><dt>Guests</dt><dd>25 to 60</dd></div>
+          <div><dt>Guests</dt><dd>20 to 60</dd></div>
           <div><dt>Meals</dt><dd>Breakfast to dinner</dd></div>
         </dl>
       </div>
@@ -587,7 +587,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       <div class="section-head">
         <span class="eyebrow">Menus</span>
         <h2>Four meals, one kitchen</h2>
-        <p>Book one meal or the whole day, for any function. Every menu is customised as per your choice. For 25 to 60 guests.</p>
+        <p>Book one meal or the whole day, for any function. Every menu is customised as per your choice. For 20 to 60 guests.</p>
       </div>
       <div class="menus">
         <article class="menu" id="meal-breakfast">
@@ -714,8 +714,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <div class="row">
             <div class="field">
               <label for="guests">Guests</label>
-              <input id="guests" name="guests" type="number" min="25" max="60" step="5" placeholder="25 to 60" inputmode="numeric">
-              <span class="hint">25 to 60 guests</span>
+              <input id="guests" name="guests" type="number" min="20" max="60" step="5" placeholder="20 to 60" inputmode="numeric">
+              <span class="hint">20 to 60 guests</span>
             </div>
             <div class="field">
               <label for="venue">Venue or area</label>
@@ -796,7 +796,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     const problems = [];
     if (!$("name").value.trim()) problems.push("add your name");
     if ($("phone").value.replace(/\D/g, "").length < 10) problems.push("enter a 10-digit phone number");
-    if (guests() < 25 || guests() > 60) problems.push("set the guest count between 25 and 60");
+    if (guests() < 20 || guests() > 60) problems.push("set the guest count between 20 and 60");
     if (!chosenMeals().length) problems.push("pick at least one meal");
     if (problems.length) {
       err.textContent = "To prepare your enquiry, please " + problems.join(", ") + ".";
