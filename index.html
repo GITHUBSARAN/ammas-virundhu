@@ -714,7 +714,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <div class="row">
             <div class="field">
               <label for="guests">Guests</label>
-              <input id="guests" name="guests" type="number" min="25" max="60" step="5" value="50" inputmode="numeric">
+              <input id="guests" name="guests" type="number" min="25" max="60" step="5" placeholder="25 to 60" inputmode="numeric">
               <span class="hint">25 to 60 guests</span>
             </div>
             <div class="field">
@@ -787,9 +787,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
   $("guests").addEventListener("input", calc);
   MEALS.forEach(m => $("m-" + m.key).addEventListener("change", calc));
 
-  // default date: about two months out
-  const d = new Date(); d.setDate(d.getDate() + 60);
-  $("date").value = d.toISOString().slice(0, 10);
+  // date starts empty; only past dates are blocked
   $("date").min = new Date().toISOString().slice(0, 10);
 
   $("enqForm").addEventListener("submit", e => {
