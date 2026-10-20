@@ -673,7 +673,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <ul class="hero-points">
           <li>Menu as per your choice</li>
           <li>Breakfast to dinner</li>
-          <li>20 to 60 guests</li>
+          <li>15 to 60 guests</li>
         </ul>
       </div>
     </div>
@@ -706,7 +706,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       <div class="mn-head">
         <span class="ab-pill"><i></i>Our menus</span>
         <h2 class="ab-title">Four meals, <em>one</em> kitchen.</h2>
-        <p class="ab-lead">Book one meal or the whole day, for any function. Pick a meal to see what we usually serve. Every menu is fully customisable, for 20 to 60 guests.</p>
+        <p class="ab-lead">Book one meal or the whole day, for any function. Pick a meal to see what we usually serve. Every menu is fully customisable, for 15 to 60 guests.</p>
       </div>
       <div class="mn-tabs" role="tablist" aria-label="Meals">
         <button class="mn-tab mt-breakfast is-active" type="button" role="tab" id="tab-breakfast" aria-controls="meal-breakfast" aria-selected="true" data-meal-tab="meal-breakfast"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Breakfast</b><small>7 – 10 AM</small></span></button><button class="mn-tab mt-lunch" type="button" role="tab" id="tab-lunch" aria-controls="meal-lunch" aria-selected="false" data-meal-tab="meal-lunch"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Lunch</b><small>12 – 3 PM</small></span></button><button class="mn-tab mt-tiffin" type="button" role="tab" id="tab-tiffin" aria-controls="meal-tiffin" aria-selected="false" data-meal-tab="meal-tiffin"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Mini Tiffin</b><small>4 – 6 PM</small></span></button><button class="mn-tab mt-dinner" type="button" role="tab" id="tab-dinner" aria-controls="meal-dinner" aria-selected="false" data-meal-tab="meal-dinner"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Dinner</b><small>7 – 10 PM</small></span></button>
@@ -881,8 +881,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <div class="row">
             <div class="field">
               <label for="guests">Guests</label>
-              <input id="guests" name="guests" type="number" min="20" max="60" step="5" placeholder="20 to 60" inputmode="numeric">
-              <span class="hint">20 to 60 guests</span>
+              <input id="guests" name="guests" type="number" min="15" max="60" step="1" placeholder="15 to 60" inputmode="numeric">
+              <span class="hint">15 to 60 guests</span>
             </div>
             <div aria-hidden="true"></div>
           </div>
@@ -969,7 +969,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     const problems = [];
     if (!$("name").value.trim()) problems.push("add your name");
     if ($("phone").value.replace(/\D/g, "").length < 10) problems.push("enter a 10-digit phone number");
-    if (guests() < 20 || guests() > 60) problems.push("set the guest count between 20 and 60");
+    if (guests() < 15 || guests() > 60) problems.push("set the guest count between 15 and 60");
     if (!$("occasion").value) problems.push("select your occasion");
     if (!chosenMeals().length) problems.push("pick at least one meal");
     if ($("date").value && $("date").value < earliestStr) problems.push("choose a function date at least 3 days from today");
