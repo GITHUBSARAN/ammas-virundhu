@@ -506,6 +506,13 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .ab-story p { margin: 0; font-size: 1rem; line-height: 1.7; color: var(--muted); }
 @media (max-width: 480px) { .ab-bento { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .ab-card { transition: none; } .ab-card:hover { transform: none; } }
+
+/* Menu cards: dish list in two compact columns, with a customisable note */
+.menu .dish-list { columns: 2 8.5rem; column-gap: 1rem; display: block; }
+.menu .dish-list li { break-inside: avoid; margin-bottom: .4rem; font-size: .95rem; }
+.custom-note { margin: 0; padding: .6rem .8rem; border-radius: 10px; background: color-mix(in srgb, var(--green) 10%, var(--surface)); border: 1px dashed color-mix(in srgb, var(--green) 45%, transparent); font-size: .86rem; line-height: 1.45; color: var(--fg); }
+.custom-note span { color: var(--green); font-weight: 800; }
+.custom-note b { color: var(--green); }
 </style>
 
 <header class="top">
@@ -549,7 +556,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         </button>
         <ul class="loc-menu" id="locMenu" role="listbox" aria-label="Areas in Puducherry we serve" hidden></ul>
       </div>
-      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search meals and occasions" aria-expanded="false" aria-controls="searchPanel">
+      <button class="icon-btn" id="searchBtn" type="button" aria-label="Search dishes, meals and occasions" aria-expanded="false" aria-controls="searchPanel">
         <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <a class="icon-btn" id="cartBtn" href="#enquire" aria-label="My booking, 0 items">
@@ -565,7 +572,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     <div class="wrap">
       <label class="search-box" for="searchInput">
         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <input id="searchInput" type="search" placeholder="Search a meal or occasion, e.g. breakfast or housewarming" autocomplete="off">
+        <input id="searchInput" type="search" placeholder="Search a dish, meal or occasion, e.g. dosai or payasam" autocomplete="off">
         <button class="icon-btn" id="searchClose" type="button" aria-label="Close search"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
       </label>
       <ul class="search-results" id="searchResults" aria-live="polite"></ul>
@@ -623,7 +630,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       <div class="section-head">
         <span class="eyebrow">Menus</span>
         <h2>Four meals, one kitchen</h2>
-        <p>Book one meal or the whole day, for any function. Every menu is customised as per your choice. For 20 to 60 guests.</p>
+        <p>Book one meal or the whole day, for any function. Here is what we usually serve. Every menu is fully customisable, so you can add, remove or swap any dish. For 20 to 60 guests.</p>
       </div>
       <div class="menus">
         <article class="menu" id="meal-breakfast">
@@ -631,11 +638,17 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <h3>Breakfast</h3>
           <p class="for">For all kinds of functions</p>
           <p class="price-tbd">Price as per your menu</p>
-          <ul>
-            <li>Menu customised as per your choice</li>
-            <li>Hot tiffin, cooked fresh in our kitchen</li>
-            <li>Ready early for muhurtham and pooja timings</li>
+          <ul class="dish-list" aria-label="Dishes">
+            <li>Idli</li>
+            <li>Vadai</li>
+            <li>Pongal</li>
+            <li>Poori Masala</li>
+            <li>Dosai</li>
+            <li>Uthappam Varieties</li>
+            <li>Sweet</li>
+            <li>Coffee</li>
           </ul>
+          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
           <button class="btn ghost small choose" type="button" data-meal="breakfast" aria-pressed="false">Add to my booking</button>
         </article>
         <article class="menu" id="meal-lunch">
@@ -643,11 +656,22 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <h3>Lunch · Ilai Virundhu</h3>
           <p class="for">For all kinds of functions</p>
           <p class="price-tbd">Price as per your menu</p>
-          <ul>
-            <li>Menu customised as per your choice</li>
-            <li>Served on traditional banana leaf</li>
-            <li>Traditional virundhu, planned around your function</li>
+          <ul class="dish-list" aria-label="Dishes">
+            <li>Sambar</li>
+            <li>Variety Rice</li>
+            <li>Vatha Kuzhambu</li>
+            <li>Mor Kuzhambu</li>
+            <li>Rasam</li>
+            <li>Mor</li>
+            <li>Poriyal</li>
+            <li>Appalam</li>
+            <li>Pickle</li>
+            <li>Vadai</li>
+            <li>Thayir Vadai</li>
+            <li>Payasam</li>
+            <li>Sweet</li>
           </ul>
+          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
           <button class="btn ghost small choose" type="button" data-meal="lunch" aria-pressed="false">Add to my booking</button>
         </article>
         <article class="menu" id="meal-tiffin">
@@ -655,11 +679,13 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <h3>Mini Tiffin</h3>
           <p class="for">For all kinds of functions</p>
           <p class="price-tbd">Price as per your menu</p>
-          <ul>
-            <li>Menu customised as per your choice</li>
-            <li>Light evening spread with coffee or tea</li>
-            <li>Easy to serve at meetings and receptions</li>
+          <ul class="dish-list" aria-label="Dishes">
+            <li>Coffee or Tea</li>
+            <li>Bonda or Bajji with Chutney</li>
+            <li>Khichdi with Kosthu</li>
+            <li>Sweet</li>
           </ul>
+          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
           <button class="btn ghost small choose" type="button" data-meal="tiffin" aria-pressed="false">Add to my booking</button>
         </article>
         <article class="menu" id="meal-dinner">
@@ -667,11 +693,17 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <h3>Dinner</h3>
           <p class="for">For all kinds of functions</p>
           <p class="price-tbd">Price as per your menu</p>
-          <ul>
-            <li>Menu customised as per your choice</li>
-            <li>Home-style dinner, served hot till the last guest</li>
-            <li>Buffet or table service</li>
+          <ul class="dish-list" aria-label="Dishes">
+            <li>Chapati with Paneer Butter Masala</li>
+            <li>Uthappam Varieties</li>
+            <li>Idli</li>
+            <li>Dosai</li>
+            <li>Fried Rice or Noodles</li>
+            <li>Gobi 65 or Paneer 65</li>
+            <li>Veg Pulao</li>
+            <li>Sweet</li>
           </ul>
+          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
           <button class="btn ghost small choose" type="button" data-meal="dinner" aria-pressed="false">Add to my booking</button>
         </article>
       </div>
@@ -996,6 +1028,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
   document.querySelectorAll(".menu").forEach(m => {
     const menuName = m.querySelector("h3").textContent;
     index.push({ text: menuName, where: "Menu", el: m });
+    m.querySelectorAll(".dish-list li").forEach(li => index.push({ text: li.textContent, where: menuName, el: li }));
   });
   document.querySelectorAll(".occasion").forEach(o => index.push({ text: o.querySelector("h3").textContent + " · " + o.querySelector(".ta").textContent, where: "Occasion", el: o }));
   function runSearch() {
