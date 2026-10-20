@@ -577,6 +577,16 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .oc-ico svg { width: 30px; height: 30px; }
 .oc-tile h3 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: 1.2rem; line-height: 1.2; color: var(--fg); }
 @media (prefers-reduced-motion: reduce) { .oc-tile { transition: none; } .oc-tile:hover { transform: none; } }
+
+/* Enquiry heading: modern fonts and a bold, high-visibility booking notice */
+#enquire { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; --ab-serif: "DM Serif Display", Georgia, serif; }
+.eq-head { display: grid; gap: 1rem; justify-items: start; margin-bottom: 2rem; max-width: 46rem; }
+.book-alert { display: flex; align-items: center; gap: 1rem; width: 100%; padding: 1rem 1.25rem; border-radius: 18px; background: linear-gradient(135deg, var(--primary), var(--primary-deep)); color: #fff; box-shadow: 0 14px 30px color-mix(in srgb, var(--primary) 30%, transparent); border: 2px solid var(--gold); }
+.book-alert-ico { width: 48px; height: 48px; flex: none; display: grid; place-items: center; border-radius: 14px; background: var(--gold); color: #2a1712; }
+.book-alert-ico svg { width: 26px; height: 26px; }
+.book-alert p { margin: 0; display: grid; gap: .15rem; }
+.book-alert strong { font-size: clamp(1.05rem, .95rem + .5vw, 1.3rem); font-weight: 800; color: var(--gold-soft); letter-spacing: .01em; }
+.book-alert span { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, .92); }
 </style>
 
 <header class="top">
@@ -825,11 +835,14 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 
   <section class="band alt" id="enquire">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Enquiry</span>
-        <h2>Tell us about your function</h2>
-        <p>Pick your meals and guest count. We will call you back with the price for your menu.</p>
-        <p class="book-ahead"><b>Please book at least 3 days before your function</b> so Amma can plan your menu and get fresh ingredients ready.</p>
+      <div class="eq-head">
+        <span class="ab-pill"><i></i>Enquiry</span>
+        <h2 class="ab-title">Tell us about your <em>function</em>.</h2>
+        <p class="ab-lead">Pick your meals and guest count. We will call you back with the price for your menu.</p>
+        <div class="book-alert" role="note">
+          <span class="book-alert-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="m9 15 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <p><strong>Please book at least 3 days before your function</strong><span>so we can plan your menu and get fresh ingredients ready.</span></p>
+        </div>
       </div>
       <div class="enquiry">
         <form class="card" id="enqForm" novalidate>
@@ -901,7 +914,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <aside class="contact-card" id="contact">
           <span class="eyebrow">Contact</span>
           <h3>Call or WhatsApp to book</h3>
-          <p class="contact-note">Prefer to talk? Call or message us and Amma's team will plan your menu with you. Please book at least 3 days in advance.</p>
+          <p class="contact-note">Prefer to talk? Call or message us and We will plan your menu with you. Please book at least 3 days in advance.</p>
           <div class="contact-grid">
         <div><span class="k">Phone &amp; WhatsApp</span><span class="v">+91 93608 76497</span><a class="wa" href="https://wa.me/919360876497" target="_blank" rel="noopener">Chat on WhatsApp →</a></div>
         <div><span class="k">Email</span><span class="v">ammasvirundhu@gmail.com</span></div>
