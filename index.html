@@ -587,6 +587,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .book-alert p { margin: 0; display: grid; gap: .15rem; }
 .book-alert strong { font-size: clamp(1.05rem, .95rem + .5vw, 1.3rem); font-weight: 800; color: var(--gold-soft); letter-spacing: .01em; }
 .book-alert span { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, .92); }
+#occasion:invalid { color: var(--muted); }
+#occasion option { color: var(--fg); }
 </style>
 
 <header class="top">
@@ -859,9 +861,10 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
           <div class="row">
             <div class="field">
               <label for="occasion">Occasion</label>
-              <select id="occasion" name="occasion">
+              <select id="occasion" name="occasion" required>
+                <option value="" disabled selected>Select your occasion</option>
                 <option>Wedding</option>
-                <option selected>Housewarming</option>
+                <option>Housewarming</option>
                 <option>Family function</option>
                 <option>Office event</option>
                 <option>Temple festival</option>
@@ -967,6 +970,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     if (!$("name").value.trim()) problems.push("add your name");
     if ($("phone").value.replace(/\D/g, "").length < 10) problems.push("enter a 10-digit phone number");
     if (guests() < 20 || guests() > 60) problems.push("set the guest count between 20 and 60");
+    if (!$("occasion").value) problems.push("select your occasion");
     if (!chosenMeals().length) problems.push("pick at least one meal");
     if ($("date").value && $("date").value < earliestStr) problems.push("choose a function date at least 3 days from today");
     if (problems.length) {
