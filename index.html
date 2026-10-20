@@ -471,7 +471,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 
 /* About: modern bento layout with DM Serif Display headline and Manrope body */
 .about-modern { --ab-serif: "DM Serif Display", Georgia, serif; --ab-sans: "Manrope", "Segoe UI", system-ui, sans-serif; font-family: var(--ab-sans); }
-.ab-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.ab-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
 @media (max-width: 920px) { .ab-grid { grid-template-columns: 1fr; } }
 .ab-intro { display: grid; gap: 1.2rem; justify-items: start; min-width: 0; }
 .ab-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .95rem; border-radius: 999px; background: color-mix(in srgb, var(--primary) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent); color: var(--primary); font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
@@ -479,7 +479,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .ab-title { font-family: var(--ab-serif); font-weight: 400; font-size: clamp(2.3rem, 1.4rem + 3vw, 3.8rem); line-height: 1.04; letter-spacing: -.01em; color: var(--fg); }
 .ab-title em { font-style: italic; color: var(--primary); background: linear-gradient(transparent 70%, color-mix(in srgb, var(--gold) 40%, transparent) 70%); padding-inline: .05em; }
 .ab-lead { font-size: clamp(1.02rem, .95rem + .3vw, 1.15rem); line-height: 1.7; color: var(--muted); max-width: 36rem; }
-.ab-quote { margin: .4rem 0 0; padding: 1.3rem 1.5rem; border-radius: 20px; background: linear-gradient(135deg, var(--primary), var(--primary-deep)); color: var(--on-primary); box-shadow: 0 18px 36px color-mix(in srgb, var(--primary) 28%, transparent); max-width: 36rem; position: relative; }
+.ab-quote { margin: 0; align-self: center; padding: 1.3rem 1.5rem; border-radius: 20px; background: linear-gradient(135deg, var(--primary), var(--primary-deep)); color: var(--on-primary); box-shadow: 0 18px 36px color-mix(in srgb, var(--primary) 28%, transparent); max-width: 36rem; position: relative; }
 .ab-quote::before { content: "\201C"; position: absolute; top: -.35em; left: .4em; font-family: var(--ab-serif); font-size: 4.5rem; color: var(--gold-soft); line-height: 1; }
 .ab-quote blockquote { margin: 0; font-family: var(--ab-serif); font-style: italic; font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); line-height: 1.45; }
 .ab-quote figcaption { margin-top: .6rem; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); }
@@ -610,35 +610,11 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
         <span class="ab-pill"><i></i>About us</span>
         <h2 class="ab-title">Home cooking,<br>at <em>function</em> scale.</h2>
         <p class="ab-lead">Amma's Virundhu cooks home-style South Indian vegetarian food, the kind families grow up with. You tell us what you like, and we plan the menu around your taste, your family tradition and your guests.</p>
-        <figure class="ab-quote">
+      </div>
+      <figure class="ab-quote">
           <blockquote>Every dish is cooked fresh in our own kitchen and brought hot to your function, so it tastes the way it does at home.</blockquote>
           <figcaption>Amma's Virundhu kitchen</figcaption>
         </figure>
-      </div>
-      <div class="ab-bento">
-        <div class="ab-card ab-veg">
-          <span class="ab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
-          <b class="ab-num">100%</b>
-          <span class="ab-label">Vegetarian kitchen</span>
-        </div>
-        <div class="ab-card ab-guests">
-          <span class="ab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M16 14.2c2.4.1 4 1.6 4.5 4.3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
-          <b class="ab-num">20–60</b>
-          <span class="ab-label">Guests per function</span>
-        </div>
-        <div class="ab-card ab-meals">
-          <div class="ab-meals-top">
-            <b class="ab-num">4</b>
-            <span class="ab-label">meals a day, breakfast to dinner</span>
-          </div>
-          <ul class="ab-chips">
-            <li>Breakfast</li><li>Lunch</li><li>Mini Tiffin</li><li>Dinner</li>
-          </ul>
-        </div>
-        <div class="ab-card ab-story">
-          <p>From a small pooja to a family function of up to 60 guests, we cover the whole day. We cook in our kitchen, bring the food hot, serve your guests and clean up, so your family can be with your guests.</p>
-        </div>
-      </div>
     </div>
   </section>
 
