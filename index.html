@@ -589,6 +589,30 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .book-alert span { font-size: 1rem; font-weight: 500; color: rgba(255, 255, 255, .92); }
 #occasion:invalid { color: var(--muted); }
 #occasion option { color: var(--fg); }
+
+/* Footer: thank-you message, quick links, contact */
+.site-footer { font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }
+.site-footer .wrap { display: grid; }
+.site-footer .ft-thanks { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; gap: .6rem; padding-block: clamp(2.2rem, 5vw, 3.2rem) 1.8rem; border-bottom: 1px solid color-mix(in srgb, var(--gold) 30%, transparent); }
+.ft-ta { margin: 0; font-family: var(--font-tamil); font-size: 1.1rem; color: var(--gold-soft); }
+.ft-title { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem); line-height: 1.15; color: #fff; }
+.ft-title em { font-style: italic; color: var(--gold-soft); }
+.ft-sub { margin: 0; font-size: 1rem; color: color-mix(in srgb, var(--on-primary) 82%, transparent); }
+.ft-cta { margin-top: .6rem; display: inline-flex; align-items: center; gap: .4rem; padding: .7rem 1.4rem; border-radius: 999px; background: var(--gold); color: #2a1712; font-weight: 800; text-decoration: none; }
+.ft-cta:hover { background: var(--gold-soft); }
+.site-footer .ft-cols { grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr) minmax(0, 1.2fr); gap: 2rem; padding-block: 2rem; }
+@media (max-width: 820px) { .site-footer .ft-cols { grid-template-columns: 1fr; gap: 1.4rem; } }
+.ft-brand { display: flex; gap: .9rem; align-items: flex-start; }
+.ft-mark { width: 52px; height: 52px; flex: none; }
+.ft-brand b { display: block; font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: 1.4rem; color: #fff; }
+.ft-brand span { font-size: .92rem; color: color-mix(in srgb, var(--on-primary) 78%, transparent); }
+.ft-links, .ft-contact { display: grid; gap: .45rem; align-content: start; font-size: .95rem; }
+.ft-links b, .ft-contact b { font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: .2rem; }
+.ft-links a { color: color-mix(in srgb, var(--on-primary) 85%, transparent); text-decoration: none; justify-self: start; }
+.ft-links a:hover { color: var(--gold-soft); text-decoration: underline; text-underline-offset: 3px; }
+.ft-contact span { color: color-mix(in srgb, var(--on-primary) 82%, transparent); }
+.ft-contact strong { color: #fff; }
+.site-footer .ft-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding-block: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--gold) 25%, transparent); font-size: .85rem; color: color-mix(in srgb, var(--on-primary) 70%, transparent) !important; }
 </style>
 
 <header class="top">
@@ -928,10 +952,44 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
   </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="zari" aria-hidden="true"></div>
-  <div class="wrap">
+  <div class="wrap ft-thanks">
+    <p class="ft-ta" lang="ta">நன்றி! மீண்டும் வருக</p>
+    <h2 class="ft-title">Thank you for visiting. <em>Visit again!</em></h2>
+    <p class="ft-sub">We look forward to cooking for your next function.</p>
+    <a class="ft-cta" href="https://wa.me/919360876497" target="_blank" rel="noopener">Book on WhatsApp</a>
+  </div>
+  <div class="wrap ft-cols">
+    <div class="ft-brand">
+      <svg class="ft-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="32" fill="#5c1414"/>
+        <circle cx="32" cy="32" r="29" fill="none" stroke="#d8a64a" stroke-width="1.6" stroke-dasharray="0 3.4" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="26.2" fill="none" stroke="#d8a64a" stroke-width=".8"/>
+        <g transform="translate(13.5 13.5) scale(.58)">
+          <path d="M7 57 C6 31 25 9 57 7 C58 37 35 57 7 57 Z" fill="#d8a64a"/>
+          <path d="M20 44 L14 32 M28 36 L22 21 M36 28 L32 14 M20 44 L32 50 M45 19 L52 27" stroke="#5c1414" stroke-width="1.6" stroke-linecap="round" opacity=".45" fill="none"/>
+          <path d="M8 56 C24 40 40 24 56 8" stroke="#5c1414" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <circle cx="30" cy="47" r="3.2" fill="#7d1d1d"/>
+        </g>
+      </svg>
+      <div><b>Amma's Virundhu</b><span>Home-style South Indian vegetarian catering in Puducherry</span></div>
+    </div>
+    <nav class="ft-links" aria-label="Footer">
+      <b>Explore</b>
+      <a href="#home">Home</a><a href="#about">About</a><a href="#menus">Menu</a><a href="#occasions">Occasions</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="ft-contact">
+      <b>Book with us</b>
+      <span>Call or WhatsApp: <strong>+91 93608 76497</strong></span>
+      <span>ammasvirundhu@gmail.com</span>
+      <span>Breakfast · Lunch · Mini Tiffin · Dinner</span>
+      <span>15 to 60 guests · Book at least 3 days in advance</span>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">
     <span>© 2026 Amma's Virundhu · Veg</span>
+    <span>Cooked with love in Puducherry</span>
   </div>
 </footer>
 
