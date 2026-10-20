@@ -513,6 +513,56 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .custom-note { margin: 0; padding: .6rem .8rem; border-radius: 10px; background: color-mix(in srgb, var(--green) 10%, var(--surface)); border: 1px dashed color-mix(in srgb, var(--green) 45%, transparent); font-size: .86rem; line-height: 1.45; color: var(--fg); }
 .custom-note span { color: var(--green); font-weight: 800; }
 .custom-note b { color: var(--green); }
+
+/* Menus: meal tabs with icons, one large panel per meal (coloured side card + dish pills) */
+.menus-modern { --ab-serif: "DM Serif Display", Georgia, serif; font-family: "Manrope", "Segoe UI", system-ui, sans-serif; --mb: #d9822b; --mb2: #b4531d; --ml: #2f6b2a; --ml2: #1c4719; --mt: #b7862c; --mt2: #7f5a17; --md: #3a2550; --md2: #6b1f3a; }
+.mn-head { display: grid; gap: 1rem; justify-items: center; text-align: center; max-width: 46rem; margin: 0 auto 2rem; }
+.mn-head .ab-lead { margin-inline: auto; }
+.mn-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; max-width: 60rem; margin: 0 auto 1.5rem; }
+@media (max-width: 640px) { .mn-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mn-tab { --c: var(--mb); --c2: var(--mb2); display: flex; align-items: center; gap: .7rem; padding: .8rem 1rem; border-radius: 18px; border: 1.5px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; text-align: left; font: inherit; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
+.mn-tab:hover { transform: translateY(-2px); border-color: var(--c); box-shadow: 0 10px 22px color-mix(in srgb, var(--c) 20%, transparent); }
+.mn-tab.mt-lunch { --c: var(--ml); --c2: var(--ml2); } .mn-tab.mt-tiffin { --c: var(--mt); --c2: var(--mt2); } .mn-tab.mt-dinner { --c: var(--md); --c2: var(--md2); }
+.mn-tab-ico { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 12px; background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--c); }
+.mn-tab-ico svg, .mn-side-ico svg { width: 24px; height: 24px; }
+.mn-tab-txt { display: grid; min-width: 0; }
+.mn-tab-txt b { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: 1.2rem; line-height: 1.1; }
+.mn-tab-txt small { font-size: .78rem; font-weight: 700; color: var(--muted); letter-spacing: .04em; }
+.mn-tab.is-active { background: linear-gradient(135deg, var(--c), var(--c2)); border-color: transparent; color: #fff; box-shadow: 0 14px 28px color-mix(in srgb, var(--c) 35%, transparent); }
+.mn-tab.is-active .mn-tab-ico { background: rgba(255, 255, 255, .18); color: #fff; }
+.mn-tab.is-active small { color: rgba(255, 255, 255, .85); }
+
+.menus-modern .menu.mn-panel { display: none; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 0; padding: 0; border: 1px solid var(--line); border-radius: 26px; background: var(--surface); overflow: hidden; box-shadow: 0 24px 50px color-mix(in srgb, var(--fg) 10%, transparent); }
+.menus-modern .menu.mn-panel.is-active { display: grid; animation: mnIn .35s ease; }
+@keyframes mnIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (max-width: 820px) { .menus-modern .menu.mn-panel { grid-template-columns: 1fr; } }
+.mn-panel { --c: var(--mb); --c2: var(--mb2); }
+.mn-panel.mp-lunch { --c: var(--ml); --c2: var(--ml2); } .mn-panel.mp-tiffin { --c: var(--mt); --c2: var(--mt2); } .mn-panel.mp-dinner { --c: var(--md); --c2: var(--md2); }
+.mn-side { position: relative; display: grid; align-content: start; gap: .75rem; padding: clamp(1.4rem, 3vw, 2rem); background: linear-gradient(160deg, var(--c), var(--c2)); color: #fff; overflow: hidden; }
+.mn-side::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, .08); box-shadow: 0 0 0 30px rgba(255, 255, 255, .05); }
+.mn-side-ico { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px; background: rgba(255, 255, 255, .16); }
+.mn-side-top { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.mn-side .when-chip { background: rgba(255, 255, 255, .16); border-color: rgba(255, 255, 255, .3); color: #fff; }
+.mn-side .meal-ta { color: rgba(255, 255, 255, .9); }
+.mn-side h3 { font-family: "DM Serif Display", Georgia, serif; font-size: clamp(1.8rem, 1.4rem + 1.4vw, 2.4rem); line-height: 1.05; color: #fff; }
+.mn-blurb { font-size: 1rem; line-height: 1.55; color: rgba(255, 255, 255, .9); }
+.mn-meta { display: flex; flex-wrap: wrap; gap: .5rem; }
+.mn-meta span { padding: .3rem .7rem; border-radius: 999px; background: rgba(255, 255, 255, .14); font-size: .82rem; font-weight: 600; }
+.mn-meta b { font-size: 1rem; }
+.mn-side .price-tbd { font-family: "DM Serif Display", Georgia, serif; color: #fff7e0; font-size: 1.25rem; }
+.mn-side .choose { justify-self: start; position: relative; z-index: 1; background: #fff; color: var(--c2); border-color: #fff; }
+.mn-side .choose:hover { background: #fff7e0; border-color: #fff7e0; }
+.mn-side .choose[aria-pressed="true"] { background: var(--gold-soft); border-color: var(--gold-soft); color: #2a1712; }
+.mn-dishes { display: grid; align-content: start; gap: 1rem; padding: clamp(1.4rem, 3vw, 2rem); }
+.mn-dishes-h { margin: 0; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--c); }
+.menus-modern .menu .dish-list { columns: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: .6rem; margin: 0; padding: 0; border: 0; list-style: none; }
+.menus-modern .menu .dish-list li { display: flex; align-items: center; gap: .6rem; margin: 0; padding: .7rem .9rem; border-radius: 14px; background: color-mix(in srgb, var(--c) 6%, var(--surface)); border: 1px solid color-mix(in srgb, var(--c) 20%, transparent); font-weight: 600; font-size: .98rem; color: var(--fg); transition: transform .15s ease, border-color .15s ease; }
+.menus-modern .menu .dish-list li:hover { transform: translateY(-2px); border-color: var(--c); }
+.menus-modern .menu .dish-list li::before { content: ""; width: 9px; height: 9px; margin: 0; border-radius: 50%; background: var(--c); transform: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); flex: none; }
+.menus-modern .custom-note { background: color-mix(in srgb, var(--green) 9%, var(--surface)); font-size: .92rem; padding: .8rem 1rem; border-radius: 14px; }
+.menus-modern .price-final { text-align: center; margin-top: 1.5rem; }
+@media (max-width: 520px) { .menus-modern .menu .dish-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .menus-modern .menu .dish-list li { padding: .6rem .7rem; font-size: .9rem; } }
+@media (prefers-reduced-motion: reduce) { .menus-modern .menu.mn-panel.is-active { animation: none; } .mn-tab, .menus-modern .menu .dish-list li { transition: none; } }
 </style>
 
 <header class="top">
@@ -625,86 +675,117 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     </div>
   </section>
 
-  <section class="band alt" id="menus">
+  <section class="band alt menus-modern" id="menus">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Menus</span>
-        <h2>Four meals, one kitchen</h2>
-        <p>Book one meal or the whole day, for any function. Here is what we usually serve. Every menu is fully customisable, so you can add, remove or swap any dish. For 20 to 60 guests.</p>
+      <div class="mn-head">
+        <span class="ab-pill"><i></i>Our menus</span>
+        <h2 class="ab-title">Four meals, <em>one</em> kitchen.</h2>
+        <p class="ab-lead">Book one meal or the whole day, for any function. Pick a meal to see what we usually serve. Every menu is fully customisable, for 20 to 60 guests.</p>
       </div>
-      <div class="menus">
-        <article class="menu" id="meal-breakfast">
-          <div class="meal-top"><span class="when-chip">7 – 10 AM</span><span class="meal-ta" lang="ta">காலை உணவு</span></div>
-          <h3>Breakfast</h3>
-          <p class="for">For all kinds of functions</p>
-          <p class="price-tbd">Price as per your menu</p>
-          <ul class="dish-list" aria-label="Dishes">
-            <li>Idli</li>
-            <li>Vadai</li>
-            <li>Pongal</li>
-            <li>Poori Masala</li>
-            <li>Dosai</li>
-            <li>Uthappam Varieties</li>
-            <li>Sweet</li>
-            <li>Coffee</li>
-          </ul>
-          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
-          <button class="btn ghost small choose" type="button" data-meal="breakfast" aria-pressed="false">Add to my booking</button>
+      <div class="mn-tabs" role="tablist" aria-label="Meals">
+        <button class="mn-tab mt-breakfast is-active" type="button" role="tab" id="tab-breakfast" aria-controls="meal-breakfast" aria-selected="true" data-meal-tab="meal-breakfast"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Breakfast</b><small>7 – 10 AM</small></span></button><button class="mn-tab mt-lunch" type="button" role="tab" id="tab-lunch" aria-controls="meal-lunch" aria-selected="false" data-meal-tab="meal-lunch"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Lunch</b><small>12 – 3 PM</small></span></button><button class="mn-tab mt-tiffin" type="button" role="tab" id="tab-tiffin" aria-controls="meal-tiffin" aria-selected="false" data-meal-tab="meal-tiffin"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Mini Tiffin</b><small>4 – 6 PM</small></span></button><button class="mn-tab mt-dinner" type="button" role="tab" id="tab-dinner" aria-controls="meal-dinner" aria-selected="false" data-meal-tab="meal-dinner"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Dinner</b><small>7 – 10 PM</small></span></button>
+      </div>
+      <div class="mn-panels">
+        <article class="menu mn-panel mp-breakfast is-active" id="meal-breakfast" role="tabpanel" aria-labelledby="tab-breakfast">
+          <div class="mn-side">
+            <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+            <div class="mn-side-top"><span class="when-chip">7 – 10 AM</span><span class="meal-ta" lang="ta">காலை உணவு</span></div>
+            <h3>Breakfast</h3>
+            <p class="mn-blurb">Start the day with hot tiffin, ready early for muhurtham and pooja timings.</p>
+            <div class="mn-meta"><span><b>8</b> dishes</span><span>For all kinds of functions</span></div>
+            <p class="price-tbd">Price as per your menu</p>
+            <button class="btn small choose" type="button" data-meal="breakfast" aria-pressed="false">Add to my booking</button>
+          </div>
+          <div class="mn-dishes">
+            <p class="mn-dishes-h">What we usually serve</p>
+            <ul class="dish-list" aria-label="Breakfast dishes">
+              <li>Idli</li>
+              <li>Vadai</li>
+              <li>Pongal</li>
+              <li>Poori Masala</li>
+              <li>Dosai</li>
+              <li>Uthappam Varieties</li>
+              <li>Sweet</li>
+              <li>Coffee</li>
+            </ul>
+            <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
+          </div>
         </article>
-        <article class="menu" id="meal-lunch">
-          <div class="meal-top"><span class="when-chip">12 – 3 PM</span><span class="meal-ta" lang="ta">மதிய விருந்து</span></div>
-          <h3>Lunch · Ilai Virundhu</h3>
-          <p class="for">For all kinds of functions</p>
-          <p class="price-tbd">Price as per your menu</p>
-          <ul class="dish-list" aria-label="Dishes">
-            <li>Sambar</li>
-            <li>Variety Rice</li>
-            <li>Vatha Kuzhambu</li>
-            <li>Mor Kuzhambu</li>
-            <li>Rasam</li>
-            <li>Mor</li>
-            <li>Poriyal</li>
-            <li>Appalam</li>
-            <li>Pickle</li>
-            <li>Vadai</li>
-            <li>Thayir Vadai</li>
-            <li>Payasam</li>
-            <li>Sweet</li>
-          </ul>
-          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
-          <button class="btn ghost small choose" type="button" data-meal="lunch" aria-pressed="false">Add to my booking</button>
+        <article class="menu mn-panel mp-lunch" id="meal-lunch" role="tabpanel" aria-labelledby="tab-lunch">
+          <div class="mn-side">
+            <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+            <div class="mn-side-top"><span class="when-chip">12 – 3 PM</span><span class="meal-ta" lang="ta">மதிய விருந்து</span></div>
+            <h3>Lunch · Ilai Virundhu</h3>
+            <p class="mn-blurb">A full traditional virundhu, served on banana leaf.</p>
+            <div class="mn-meta"><span><b>13</b> dishes</span><span>For all kinds of functions</span></div>
+            <p class="price-tbd">Price as per your menu</p>
+            <button class="btn small choose" type="button" data-meal="lunch" aria-pressed="false">Add to my booking</button>
+          </div>
+          <div class="mn-dishes">
+            <p class="mn-dishes-h">What we usually serve</p>
+            <ul class="dish-list" aria-label="Lunch dishes">
+              <li>Sambar</li>
+              <li>Variety Rice</li>
+              <li>Vatha Kuzhambu</li>
+              <li>Mor Kuzhambu</li>
+              <li>Rasam</li>
+              <li>Mor</li>
+              <li>Poriyal</li>
+              <li>Appalam</li>
+              <li>Pickle</li>
+              <li>Vadai</li>
+              <li>Thayir Vadai</li>
+              <li>Payasam</li>
+              <li>Sweet</li>
+            </ul>
+            <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
+          </div>
         </article>
-        <article class="menu" id="meal-tiffin">
-          <div class="meal-top"><span class="when-chip">4 – 6 PM</span><span class="meal-ta" lang="ta">மாலை சிற்றுண்டி</span></div>
-          <h3>Mini Tiffin</h3>
-          <p class="for">For all kinds of functions</p>
-          <p class="price-tbd">Price as per your menu</p>
-          <ul class="dish-list" aria-label="Dishes">
-            <li>Coffee or Tea</li>
-            <li>Bonda or Bajji with Chutney</li>
-            <li>Khichdi with Kosthu</li>
-            <li>Sweet</li>
-          </ul>
-          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
-          <button class="btn ghost small choose" type="button" data-meal="tiffin" aria-pressed="false">Add to my booking</button>
+        <article class="menu mn-panel mp-tiffin" id="meal-tiffin" role="tabpanel" aria-labelledby="tab-tiffin">
+          <div class="mn-side">
+            <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+            <div class="mn-side-top"><span class="when-chip">4 – 6 PM</span><span class="meal-ta" lang="ta">மாலை சிற்றுண்டி</span></div>
+            <h3>Mini Tiffin</h3>
+            <p class="mn-blurb">A light evening spread with hot coffee or tea.</p>
+            <div class="mn-meta"><span><b>4</b> dishes</span><span>For all kinds of functions</span></div>
+            <p class="price-tbd">Price as per your menu</p>
+            <button class="btn small choose" type="button" data-meal="tiffin" aria-pressed="false">Add to my booking</button>
+          </div>
+          <div class="mn-dishes">
+            <p class="mn-dishes-h">What we usually serve</p>
+            <ul class="dish-list" aria-label="Mini Tiffin dishes">
+              <li>Coffee or Tea</li>
+              <li>Bonda or Bajji with Chutney</li>
+              <li>Khichdi with Kosthu</li>
+              <li>Sweet</li>
+            </ul>
+            <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
+          </div>
         </article>
-        <article class="menu" id="meal-dinner">
-          <div class="meal-top"><span class="when-chip">7 – 10 PM</span><span class="meal-ta" lang="ta">இரவு உணவு</span></div>
-          <h3>Dinner</h3>
-          <p class="for">For all kinds of functions</p>
-          <p class="price-tbd">Price as per your menu</p>
-          <ul class="dish-list" aria-label="Dishes">
-            <li>Chapati with Paneer Butter Masala</li>
-            <li>Uthappam Varieties</li>
-            <li>Idli</li>
-            <li>Dosai</li>
-            <li>Fried Rice or Noodles</li>
-            <li>Gobi 65 or Paneer 65</li>
-            <li>Veg Pulao</li>
-            <li>Sweet</li>
-          </ul>
-          <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Customisable:</b> add, remove or swap any dish to suit your function</p>
-          <button class="btn ghost small choose" type="button" data-meal="dinner" aria-pressed="false">Add to my booking</button>
+        <article class="menu mn-panel mp-dinner" id="meal-dinner" role="tabpanel" aria-labelledby="tab-dinner">
+          <div class="mn-side">
+            <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div class="mn-side-top"><span class="when-chip">7 – 10 PM</span><span class="meal-ta" lang="ta">இரவு உணவு</span></div>
+            <h3>Dinner</h3>
+            <p class="mn-blurb">A hearty home-style dinner, served hot till the last guest.</p>
+            <div class="mn-meta"><span><b>8</b> dishes</span><span>For all kinds of functions</span></div>
+            <p class="price-tbd">Price as per your menu</p>
+            <button class="btn small choose" type="button" data-meal="dinner" aria-pressed="false">Add to my booking</button>
+          </div>
+          <div class="mn-dishes">
+            <p class="mn-dishes-h">What we usually serve</p>
+            <ul class="dish-list" aria-label="Dinner dishes">
+              <li>Chapati with Paneer Butter Masala</li>
+              <li>Uthappam Varieties</li>
+              <li>Idli</li>
+              <li>Dosai</li>
+              <li>Fried Rice or Noodles</li>
+              <li>Gobi 65 or Paneer 65</li>
+              <li>Veg Pulao</li>
+              <li>Sweet</li>
+            </ul>
+            <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
+          </div>
         </article>
       </div>
       <p class="note price-final">Price will be fixed finally as per the food items you choose. Tell us what you would like and we will send you the price.</p>
@@ -928,12 +1009,24 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     }
   }
 
+  // Menu tabs: show one meal panel at a time
+  function activateMeal(id) {
+    document.querySelectorAll(".mn-tab").forEach(t => {
+      const on = t.dataset.mealTab === id;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on);
+    });
+    document.querySelectorAll(".mn-panel").forEach(pn => pn.classList.toggle("is-active", pn.id === id));
+  }
+  document.querySelectorAll(".mn-tab").forEach(t => t.addEventListener("click", () => activateMeal(t.dataset.mealTab)));
+
   // Ticker: keep enough copies to fill twice the screen width, and scroll at a steady 70px per second
   const track = document.querySelector(".ticker-track");
   const unit = track.firstElementChild.cloneNode(true);
   function fillTicker() {
     const items = track.children.length / 2;
     const one = track.scrollWidth / track.children.length;
+    if (!(one > 0)) return; // ticker hidden or not laid out yet
     let need = Math.max(2, Math.ceil(window.innerWidth / one) + 1);
     if (need !== items) {
       track.innerHTML = "";
@@ -1048,6 +1141,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       b.firstChild.textContent = h.text; b.lastChild.textContent = h.where;
       b.addEventListener("click", () => {
         closeSearch();
+        const pnl = h.el.closest(".mn-panel"); if (pnl) activateMeal(pnl.id);
         h.el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
         h.el.classList.remove("flash"); void h.el.offsetWidth; h.el.classList.add("flash");
       });
