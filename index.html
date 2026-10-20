@@ -564,6 +564,19 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .menus-modern .price-final { text-align: center; margin-top: 1.5rem; }
 @media (max-width: 520px) { .menus-modern .menu .dish-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .menus-modern .menu .dish-list li { padding: .6rem .7rem; font-size: .9rem; } }
 @media (prefers-reduced-motion: reduce) { .menus-modern .menu.mn-panel.is-active { animation: none; } .mn-tab, .menus-modern .menu .dish-list li { transition: none; } }
+
+/* Occasions: simple icon tiles, name only */
+.occ-simple { --ab-serif: "DM Serif Display", Georgia, serif; font-family: "Manrope", "Segoe UI", system-ui, sans-serif; }
+.oc-head { display: grid; gap: 1rem; justify-items: center; text-align: center; margin: 0 auto 2.2rem; max-width: 46rem; }
+.oc-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 1100px) { .oc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .oc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; } }
+.oc-tile { display: grid; justify-items: center; align-content: center; gap: .9rem; padding: 1.6rem 1rem; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); text-align: center; box-shadow: 0 10px 26px color-mix(in srgb, var(--fg) 6%, transparent); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.oc-tile:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: 0 18px 34px color-mix(in srgb, var(--primary) 14%, transparent); }
+.oc-ico { width: 60px; height: 60px; display: grid; place-items: center; border-radius: 50%; color: var(--primary); background: color-mix(in srgb, var(--gold) 16%, var(--surface)); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--gold) 55%, transparent); }
+.oc-ico svg { width: 30px; height: 30px; }
+.oc-tile h3 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; font-size: 1.2rem; line-height: 1.2; color: var(--fg); }
+@media (prefers-reduced-motion: reduce) { .oc-tile { transition: none; } .oc-tile:hover { transform: none; } }
 </style>
 
 <header class="top">
@@ -793,20 +806,20 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     </div>
   </section>
 
-  <section class="band" id="occasions">
+  <section class="band occ-simple" id="occasions">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Occasions</span>
-        <h2>We cook for all kinds of functions</h2>
+      <div class="oc-head">
+        <span class="ab-pill"><i></i>Occasions</span>
+        <h2 class="ab-title">We cook for <em>all</em> kinds of functions.</h2>
       </div>
-      <div class="occasions">
-        <div class="occasion"><span class="ta">Griha Pravesam</span><h3>Housewarmings</h3><p>Early-morning setup so the meal is ready right after the pooja.</p></div>
-        <div class="occasion"><span class="ta">Seemantham &amp; Ayush Homam</span><h3>Family functions</h3><p>Satvik menus with the dishes your family tradition calls for.</p></div>
-        <div class="occasion"><span class="ta">Corporate</span><h3>Office events</h3><p>Breakfast meetings, working lunches and evening tiffin for town halls and launches.</p></div>
-        <div class="occasion"><span class="ta">Utsavam</span><h3>Temple festivals</h3><p>Annadhanam and prasadam meals, with no onion and no garlic.</p></div>
-        <div class="occasion"><span class="ta">Karumaadhi &amp; 16th day</span><h3>Funeral ceremonies</h3><p>Simple satvik meals for the family and guests, prepared with care and served quietly on the day of the rites.</p></div>
-        <div class="occasion"><span class="ta">Any celebration</span><h3>Every other function</h3><p>Birthdays, anniversaries, get-togethers and more. Tell us the function and we will plan the food.</p></div>
-      </div>
+      <ul class="oc-grid">
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5M6.5 9.8V19h11V9.8M10 19v-5h4v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Housewarming</h3></li>
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13.2" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 19c.4-3 2.2-4.6 4.5-4.6M20.5 19c-.4-3-2.2-4.6-4.5-4.6M8.5 20c.4-2.2 1.8-3.3 3.5-3.3s3.1 1.1 3.5 3.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Family functions</h3></li>
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="11.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><h3>Office events</h3></li>
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v2M9 8h6l-1-3h-4l-1 3ZM7.5 12h9l-1.5-4h-6l-1.5 4ZM5.5 20h13l-1.5-8h-10l-1.5 8ZM10.5 20v-4h3v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg></span><h3>Temple festivals</h3></li>
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4c1.8 2 2.2 3.6 0 5.5-2.2-1.9-1.8-3.5 0-5.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 13h14c-.8 3-3.6 5-7 5s-6.2-2-7-5ZM12 18v2.5M9 20.5h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h3>Funeral ceremonies</h3></li>
+        <li class="occasion oc-tile"><span class="oc-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 13.8 9l5.7 1.5-5.7 1.6L12 17.5l-1.8-5.4L4.5 10.5 10.2 9 12 3.5ZM18.5 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span><h3>Any celebration</h3></li>
+      </ul>
     </div>
   </section>
 
@@ -1124,7 +1137,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     index.push({ text: menuName, where: "Menu", el: m });
     m.querySelectorAll(".dish-list li").forEach(li => index.push({ text: li.textContent, where: menuName, el: li }));
   });
-  document.querySelectorAll(".occasion").forEach(o => index.push({ text: o.querySelector("h3").textContent + " · " + o.querySelector(".ta").textContent, where: "Occasion", el: o }));
+  document.querySelectorAll(".occasion").forEach(o => index.push({ text: o.querySelector("h3").textContent, where: "Occasion", el: o }));
   function runSearch() {
     const q = input.value.trim().toLowerCase();
     results.innerHTML = "";
