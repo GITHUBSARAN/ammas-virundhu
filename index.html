@@ -10,7 +10,7 @@
 <link rel="icon" href="logo-icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hind:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;700&family=Kalam:wght@700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hind:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;700&family=Kalam:wght@700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -468,6 +468,44 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 @media (max-width: 900px) { .enquiry { grid-template-columns: 1fr; } }
 .book-ahead { display: inline-block; margin-top: .4rem; padding: .55rem .9rem; border-left: 4px solid var(--gold); border-radius: 6px; background: color-mix(in srgb, var(--gold) 14%, var(--surface)); color: var(--fg) !important; }
 .book-ahead b { color: var(--primary); }
+
+/* About: modern bento layout with DM Serif Display headline and Manrope body */
+.about-modern { --ab-serif: "DM Serif Display", Georgia, serif; --ab-sans: "Manrope", "Segoe UI", system-ui, sans-serif; font-family: var(--ab-sans); }
+.ab-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 920px) { .ab-grid { grid-template-columns: 1fr; } }
+.ab-intro { display: grid; gap: 1.2rem; justify-items: start; min-width: 0; }
+.ab-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .95rem; border-radius: 999px; background: color-mix(in srgb, var(--primary) 9%, var(--surface)); border: 1px solid color-mix(in srgb, var(--primary) 22%, transparent); color: var(--primary); font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; }
+.ab-pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 25%, transparent); }
+.ab-title { font-family: var(--ab-serif); font-weight: 400; font-size: clamp(2.3rem, 1.4rem + 3vw, 3.8rem); line-height: 1.04; letter-spacing: -.01em; color: var(--fg); }
+.ab-title em { font-style: italic; color: var(--primary); background: linear-gradient(transparent 70%, color-mix(in srgb, var(--gold) 40%, transparent) 70%); padding-inline: .05em; }
+.ab-lead { font-size: clamp(1.02rem, .95rem + .3vw, 1.15rem); line-height: 1.7; color: var(--muted); max-width: 36rem; }
+.ab-quote { margin: .4rem 0 0; padding: 1.3rem 1.5rem; border-radius: 20px; background: linear-gradient(135deg, var(--primary), var(--primary-deep)); color: var(--on-primary); box-shadow: 0 18px 36px color-mix(in srgb, var(--primary) 28%, transparent); max-width: 36rem; position: relative; }
+.ab-quote::before { content: "\201C"; position: absolute; top: -.35em; left: .4em; font-family: var(--ab-serif); font-size: 4.5rem; color: var(--gold-soft); line-height: 1; }
+.ab-quote blockquote { margin: 0; font-family: var(--ab-serif); font-style: italic; font-size: clamp(1.1rem, 1rem + .4vw, 1.3rem); line-height: 1.45; }
+.ab-quote figcaption { margin-top: .6rem; font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); }
+.ab-bento { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; min-width: 0; }
+.ab-card { position: relative; display: grid; gap: .35rem; align-content: start; padding: 1.4rem; border-radius: 22px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 1px 0 color-mix(in srgb, var(--fg) 4%, transparent), 0 14px 30px color-mix(in srgb, var(--fg) 7%, transparent); transition: transform .25s ease, box-shadow .25s ease; overflow: hidden; }
+.ab-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px color-mix(in srgb, var(--fg) 12%, transparent); }
+.ab-ico { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; margin-bottom: .5rem; }
+.ab-ico svg { width: 24px; height: 24px; }
+.ab-num { font-family: var(--ab-serif); font-weight: 400; font-size: clamp(2.2rem, 1.6rem + 2vw, 3rem); line-height: 1; letter-spacing: -.01em; font-variant-numeric: lining-nums; }
+.ab-label { font-size: .95rem; font-weight: 600; color: var(--muted); }
+.ab-veg { background: linear-gradient(160deg, color-mix(in srgb, var(--green) 14%, var(--surface)), var(--surface) 70%); }
+.ab-veg .ab-ico { background: color-mix(in srgb, var(--green) 18%, transparent); color: var(--green); }
+.ab-veg .ab-num { color: var(--green); }
+.ab-guests { background: linear-gradient(160deg, color-mix(in srgb, var(--gold) 20%, var(--surface)), var(--surface) 70%); }
+.ab-guests .ab-ico { background: color-mix(in srgb, var(--gold) 24%, transparent); color: #9a6d1c; }
+.ab-guests .ab-num { color: #9a6d1c; }
+.ab-meals { grid-column: 1 / -1; background: linear-gradient(135deg, var(--primary-deep), var(--primary)); border-color: transparent; color: var(--on-primary); gap: 1rem; }
+.ab-meals-top { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; }
+.ab-meals .ab-num { color: var(--gold-soft); }
+.ab-meals .ab-label { color: color-mix(in srgb, var(--on-primary) 85%, transparent); font-size: 1rem; }
+.ab-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+.ab-chips li { padding: .45rem .95rem; border-radius: 999px; background: color-mix(in srgb, var(--on-primary) 12%, transparent); border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent); font-weight: 700; font-size: .9rem; color: var(--on-primary); }
+.ab-story { grid-column: 1 / -1; }
+.ab-story p { margin: 0; font-size: 1rem; line-height: 1.7; color: var(--muted); }
+@media (max-width: 480px) { .ab-bento { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ab-card { transition: none; } .ab-card:hover { transform: none; } }
 </style>
 
 <header class="top">
@@ -566,20 +604,40 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     </div>
   </section>
 
-  <section class="band" id="about">
-    <div class="wrap about-grid">
-      <div class="section-head" style="margin-bottom:0">
-        <span class="eyebrow">About us</span>
-        <h2>Home cooking, at function scale</h2>
+  <section class="band about-modern" id="about">
+    <div class="wrap ab-grid">
+      <div class="ab-intro">
+        <span class="ab-pill"><i></i>About us</span>
+        <h2 class="ab-title">Home cooking,<br>at <em>function</em> scale.</h2>
+        <p class="ab-lead">Amma's Virundhu cooks home-style South Indian vegetarian food, the kind families grow up with. You tell us what you like, and we plan the menu around your taste, your family tradition and your guests.</p>
+        <figure class="ab-quote">
+          <blockquote>Every dish is cooked fresh in our own kitchen and brought hot to your function, so it tastes the way it does at home.</blockquote>
+          <figcaption>Amma's Virundhu kitchen</figcaption>
+        </figure>
       </div>
-      <div class="about-copy">
-        <p>Amma's Virundhu cooks home-style South Indian vegetarian food, the kind families grow up with. You tell us what you like, and we plan the menu around your taste, your family tradition and your guests. Every dish is cooked fresh in our own kitchen and brought hot to your function, so it tastes the way it does at home.</p>
-        <p>From a small pooja to a family function of up to 60 guests, we can cover the whole day: morning breakfast, lunch on the banana leaf, evening mini tiffin and dinner. We cook in our kitchen, bring the food hot, serve your guests and clean up, so your family can be with your guests.</p>
-        <dl class="about-facts">
-          <div><dt>Kitchen</dt><dd>100% vegetarian</dd></div>
-          <div><dt>Guests</dt><dd>20 to 60</dd></div>
-          <div><dt>Meals</dt><dd>Breakfast to dinner</dd></div>
-        </dl>
+      <div class="ab-bento">
+        <div class="ab-card ab-veg">
+          <span class="ab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+          <b class="ab-num">100%</b>
+          <span class="ab-label">Vegetarian kitchen</span>
+        </div>
+        <div class="ab-card ab-guests">
+          <span class="ab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M3.5 19c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M16 14.2c2.4.1 4 1.6 4.5 4.3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
+          <b class="ab-num">20–60</b>
+          <span class="ab-label">Guests per function</span>
+        </div>
+        <div class="ab-card ab-meals">
+          <div class="ab-meals-top">
+            <b class="ab-num">4</b>
+            <span class="ab-label">meals a day, breakfast to dinner</span>
+          </div>
+          <ul class="ab-chips">
+            <li>Breakfast</li><li>Lunch</li><li>Mini Tiffin</li><li>Dinner</li>
+          </ul>
+        </div>
+        <div class="ab-card ab-story">
+          <p>From a small pooja to a family function of up to 60 guests, we cover the whole day. We cook in our kitchen, bring the food hot, serve your guests and clean up, so your family can be with your guests.</p>
+        </div>
       </div>
     </div>
   </section>
