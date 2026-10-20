@@ -613,6 +613,13 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
 .ft-contact span { color: color-mix(in srgb, var(--on-primary) 82%, transparent); }
 .ft-contact strong { color: #fff; }
 .site-footer .ft-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; padding-block: 1.1rem; border-top: 1px solid color-mix(in srgb, var(--gold) 25%, transparent); font-size: .85rem; color: color-mix(in srgb, var(--on-primary) 70%, transparent) !important; }
+
+/* Multi-select meal tabs */
+.mn-hint { text-align: center; margin: -0.6rem 0 .9rem; font-size: .9rem; font-weight: 600; color: var(--muted); }
+.mn-tab { position: relative; }
+.mn-tab-check { position: absolute; top: 8px; right: 10px; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; font-size: .75rem; font-weight: 800; border: 1.5px solid var(--line); color: transparent; background: var(--surface); }
+.mn-tab.is-active .mn-tab-check { background: #fff; border-color: #fff; color: var(--c2); }
+.mn-panels { display: grid; gap: 1.25rem; }
 </style>
 
 <header class="top">
@@ -730,13 +737,14 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
       <div class="mn-head">
         <span class="ab-pill"><i></i>Our menus</span>
         <h2 class="ab-title">Four meals, <em>one</em> kitchen.</h2>
-        <p class="ab-lead">Book one meal or the whole day, for any function. Pick a meal to see what we usually serve. Every menu is fully customisable, for 15 to 60 guests.</p>
+        <p class="ab-lead">Book one meal or the whole day, for any function. Pick one or more meals to see what we usually serve. Every menu is fully customisable, for 15 to 60 guests.</p>
       </div>
-      <div class="mn-tabs" role="tablist" aria-label="Meals">
-        <button class="mn-tab mt-breakfast is-active" type="button" role="tab" id="tab-breakfast" aria-controls="meal-breakfast" aria-selected="true" data-meal-tab="meal-breakfast"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Breakfast</b><small>7 – 10 AM</small></span></button><button class="mn-tab mt-lunch" type="button" role="tab" id="tab-lunch" aria-controls="meal-lunch" aria-selected="false" data-meal-tab="meal-lunch"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Lunch</b><small>12 – 3 PM</small></span></button><button class="mn-tab mt-tiffin" type="button" role="tab" id="tab-tiffin" aria-controls="meal-tiffin" aria-selected="false" data-meal-tab="meal-tiffin"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Mini Tiffin</b><small>4 – 6 PM</small></span></button><button class="mn-tab mt-dinner" type="button" role="tab" id="tab-dinner" aria-controls="meal-dinner" aria-selected="false" data-meal-tab="meal-dinner"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Dinner</b><small>7 – 10 PM</small></span></button>
+      <p class="mn-hint">Tap to select one or more meals</p>
+      <div class="mn-tabs" role="group" aria-label="Choose meals">
+        <button class="mn-tab mt-breakfast is-active" type="button" id="tab-breakfast" aria-controls="meal-breakfast" aria-pressed="true" data-meal-tab="meal-breakfast"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Breakfast</b><small>7 – 10 AM</small></span><span class="mn-tab-check" aria-hidden="true">&#10003;</span></button><button class="mn-tab mt-lunch" type="button" id="tab-lunch" aria-controls="meal-lunch" aria-pressed="false" data-meal-tab="meal-lunch"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Lunch</b><small>12 – 3 PM</small></span><span class="mn-tab-check" aria-hidden="true">&#10003;</span></button><button class="mn-tab mt-tiffin" type="button" id="tab-tiffin" aria-controls="meal-tiffin" aria-pressed="false" data-meal-tab="meal-tiffin"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Mini Tiffin</b><small>4 – 6 PM</small></span><span class="mn-tab-check" aria-hidden="true">&#10003;</span></button><button class="mn-tab mt-dinner" type="button" id="tab-dinner" aria-controls="meal-dinner" aria-pressed="false" data-meal-tab="meal-dinner"><span class="mn-tab-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span class="mn-tab-txt"><b>Dinner</b><small>7 – 10 PM</small></span><span class="mn-tab-check" aria-hidden="true">&#10003;</span></button>
       </div>
       <div class="mn-panels">
-        <article class="menu mn-panel mp-breakfast is-active" id="meal-breakfast" role="tabpanel" aria-labelledby="tab-breakfast">
+        <article class="menu mn-panel mp-breakfast is-active" id="meal-breakfast" aria-labelledby="tab-breakfast">
           <div class="mn-side">
             <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17h16M7 17a5 5 0 0 1 10 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M12 4v3M5.2 8.2l2 2M18.8 8.2l-2 2M3 20h18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
             <div class="mn-side-top"><span class="when-chip">7 – 10 AM</span><span class="meal-ta" lang="ta">காலை உணவு</span></div>
@@ -761,7 +769,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
           </div>
         </article>
-        <article class="menu mn-panel mp-lunch" id="meal-lunch" role="tabpanel" aria-labelledby="tab-lunch">
+        <article class="menu mn-panel mp-lunch" id="meal-lunch" aria-labelledby="tab-lunch">
           <div class="mn-side">
             <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19c3-4 6-7 10-9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
             <div class="mn-side-top"><span class="when-chip">12 – 3 PM</span><span class="meal-ta" lang="ta">மதிய விருந்து</span></div>
@@ -791,7 +799,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
           </div>
         </article>
-        <article class="menu mn-panel mp-tiffin" id="meal-tiffin" role="tabpanel" aria-labelledby="tab-tiffin">
+        <article class="menu mn-panel mp-tiffin" id="meal-tiffin" aria-labelledby="tab-tiffin">
           <div class="mn-side">
             <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c0 1.2 1 1.4 1 2.6M11.5 3.5c0 1.2 1 1.4 1 2.6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
             <div class="mn-side-top"><span class="when-chip">4 – 6 PM</span><span class="meal-ta" lang="ta">மாலை சிற்றுண்டி</span></div>
@@ -812,7 +820,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
             <p class="custom-note"><span aria-hidden="true">&#10003;</span> <b>Fully customisable:</b> add, remove or swap any dish to suit your function and family tradition.</p>
           </div>
         </article>
-        <article class="menu mn-panel mp-dinner" id="meal-dinner" role="tabpanel" aria-labelledby="tab-dinner">
+        <article class="menu mn-panel mp-dinner" id="meal-dinner" aria-labelledby="tab-dinner">
           <div class="mn-side">
             <span class="mn-side-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M16 4.5v2M15 5.5h2M19.5 8.5v1.6M18.7 9.3h1.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
             <div class="mn-side-top"><span class="when-chip">7 – 10 PM</span><span class="meal-ta" lang="ta">இரவு உணவு</span></div>
@@ -1069,16 +1077,23 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; justify-co
     }
   }
 
-  // Menu tabs: show one meal panel at a time
-  function activateMeal(id) {
-    document.querySelectorAll(".mn-tab").forEach(t => {
-      const on = t.dataset.mealTab === id;
-      t.classList.toggle("is-active", on);
-      t.setAttribute("aria-selected", on);
-    });
-    document.querySelectorAll(".mn-panel").forEach(pn => pn.classList.toggle("is-active", pn.id === id));
+  // Menu tabs: select one or more meals; each selected meal shows its panel (at least one stays open)
+  function setMeal(id, on) {
+    const tab = document.querySelector('.mn-tab[data-meal-tab="' + id + '"]');
+    const panel = document.getElementById(id);
+    if (!tab || !panel) return;
+    tab.classList.toggle("is-active", on);
+    tab.setAttribute("aria-pressed", on);
+    panel.classList.toggle("is-active", on);
   }
-  document.querySelectorAll(".mn-tab").forEach(t => t.addEventListener("click", () => activateMeal(t.dataset.mealTab)));
+  function activateMeal(id) { setMeal(id, true); }
+  document.querySelectorAll(".mn-tab").forEach(t => t.addEventListener("click", () => {
+    const id = t.dataset.mealTab;
+    const on = !t.classList.contains("is-active");
+    if (!on && document.querySelectorAll(".mn-tab.is-active").length === 1) return;
+    setMeal(id, on);
+    if (on) document.getElementById(id).scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest" });
+  }));
 
   // Ticker: keep enough copies to fill twice the screen width, and scroll at a steady 70px per second
   const track = document.querySelector(".ticker-track");
